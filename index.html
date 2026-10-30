@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5f6f2" />
+    <meta name="description" content="A secure academic performance analytics workspace for instructors." />
+    <title>Classmark — Academic Analytics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="app.js"></script>
+  </head>
+  <body>
+    <main id="auth-screen" class="auth-screen">
+      <section class="auth-aside">
+        <a class="brand brand-light" href="#" aria-label="Classmark home"><span class="brand-mark">C</span><span>classmark</span></a>
+        <div class="aside-copy">
+          <p class="eyebrow">ACADEMIC PERFORMANCE, CLEARLY</p>
+          <h1>See the work.<br /><em>Shape the outcome.</em></h1>
+          <p class="aside-description">A calmer way to record marks, follow class progress, and make every next step count.</p>
+        </div>
+        <div class="aside-foot"><span class="status-dot"></span> Your classroom, in good hands</div>
+        <div class="aside-orbit orbit-one"></div><div class="aside-orbit orbit-two"></div>
+      </section>
+      <section class="auth-main">
+        <div class="auth-mobile-brand"><a class="brand" href="#"><span class="brand-mark">C</span><span>classmark</span></a></div>
+        <div class="auth-card">
+          <div id="auth-heading">
+            <p class="eyebrow accent">WELCOME TO CLASSMARK</p>
+            <h2 id="auth-title">Good to have you back.</h2>
+            <p id="auth-subtitle" class="muted">Sign in to pick up where your class left off.</p>
+          </div>
+          <div class="auth-tabs" role="tablist" aria-label="Account access">
+            <button class="auth-tab active" id="signin-tab" role="tab" aria-selected="true" type="button">Sign in</button>
+            <button class="auth-tab" id="signup-tab" role="tab" aria-selected="false" type="button">Create account</button>
+          </div>
+          <form id="auth-form">
+            <label id="name-field" class="field hidden">Full name<input id="full-name" type="text" autocomplete="name" placeholder="e.g. Amina Wekesa" /></label>
+            <label class="field">Email address<input id="email" type="email" autocomplete="email" placeholder="you@school.edu" required /></label>
+            <label class="field">Password<input id="password" type="password" autocomplete="current-password" placeholder="At least 8 characters" minlength="8" required /></label>
+            <div id="confirm-field" class="field hidden"><label id="confirm-label" for="confirm-password">Confirm password</label><input id="confirm-password" type="password" autocomplete="new-password" placeholder="Enter your password again" minlength="8" /></div>
+            <div id="signin-options" class="form-row"><label class="check-label"><input type="checkbox" id="remember" checked /><span>Keep me signed in</span></label><button type="button" id="forgot-password" class="text-button">Forgot password?</button></div>
+            <button id="auth-submit" class="button button-primary button-wide" type="submit"><span>Sign in</span><span aria-hidden="true">→</span></button>
+          </form>
+          <p id="auth-message" class="message" role="status" aria-live="polite"></p>
+          <p class="privacy-note"><span aria-hidden="true">⌑</span> Your class records are private to your account.</p>
+        </div>
+        <p class="auth-legal">By continuing, you agree to use Classmark responsibly and protect your students’ data.</p>
+      </section>
+    </main>
+
+    <main id="app-screen" class="app-screen hidden">
+      <aside class="sidebar">
+        <a class="brand" href="#"><span class="brand-mark">C</span><span>classmark</span></a>
+        <div class="sidebar-label">WORKSPACE</div>
+        <button class="nav-item active" type="button"><span class="nav-icon">▦</span> Overview</button>
+        <div class="sidebar-note"><span class="note-icon">✳</span><div><strong>Your class, at a glance</strong><p>Keep student progress and marks in one focused space.</p></div></div>
+        <div class="sidebar-bottom"><div class="user-chip"><div class="avatar" id="user-avatar">I</div><div class="user-details"><strong id="user-name">Instructor</strong><span id="user-email"></span></div><button id="signout-button" class="icon-button" type="button" title="Sign out" aria-label="Sign out">↗</button></div><span class="sidebar-version">CLASSMARK · ACADEMIC ANALYTICS</span></div>
+      </aside>
+      <section class="workspace">
+        <header class="topbar"><div><span class="breadcrumb">Workspace</span><span class="breadcrumb-sep">/</span><strong>Overview</strong></div><div class="today-label"><span class="status-dot"></span> Gradebook synced</div></header>
+        <div class="page-content">
+          <div class="page-heading"><div><p class="eyebrow accent">YOUR TEACHING SPACE</p><h1>Good day, <span id="greeting-name">Instructor</span><span class="wave">✳</span></h1><p class="muted">A clear view of how your students are doing.</p></div><button id="add-student-top" class="button button-primary" type="button"><span>＋</span> Add student</button></div>
+          <div class="stats-grid">
+            <article class="stat-card"><div class="stat-top"><span class="stat-label">STUDENTS</span><span class="stat-icon sage">♙</span></div><div class="stat-value" id="student-count">—</div><div class="stat-caption">In your gradebook</div></article>
+            <article class="stat-card"><div class="stat-top"><span class="stat-label">CLASS AVERAGE</span><span class="stat-icon blue">⌁</span></div><div class="stat-value"><span id="class-average">—</span><small>%</small></div><div class="stat-caption">Across Math &amp; Science</div></article>
+            <article class="stat-card"><div class="stat-top"><span class="stat-label">PASSING</span><span class="stat-icon gold">✓</span></div><div class="stat-value"><span id="pass-rate">—</span><small>%</small></div><div class="stat-caption">Meeting the 50% benchmark</div></article>
+            <article class="stat-card"><div class="stat-top"><span class="stat-label">TOP SUBJECT</span><span class="stat-icon lilac">✦</span></div><div class="stat-value subject-value" id="top-subject">—</div><div class="stat-caption" id="subject-caption">Waiting for marks</div></article>
+          </div>
+          <section class="panel performance-panel"><div class="panel-heading"><div><p class="eyebrow">CLASS SNAPSHOT</p><h2>Performance overview</h2></div><span class="panel-tag"><span class="status-dot"></span> Live summary</span></div><div class="performance-body"><div class="chart-area"><div class="chart-y-labels"><span>100</span><span>75</span><span>50</span><span>25</span><span>0</span></div><div class="chart" id="chart"><div class="chart-grid"><i></i><i></i><i></i><i></i><i></i></div><div class="bar-pair"><div class="bar math-bar" id="math-bar" style="height:0%"><span id="math-average">0%</span></div><div class="bar science-bar" id="science-bar" style="height:0%"><span id="science-average">0%</span></div></div><div class="chart-axis"><span>Math</span><span>Science</span></div></div></div><div class="chart-legend"><span><i class="legend-dot math-dot"></i> Mathematics</span><span><i class="legend-dot science-dot"></i> Science</span></div><div class="insight-card"><div class="insight-symbol">✧</div><div><span class="insight-label">A LITTLE INSIGHT</span><p id="insight-text">Add your first student to see how your class is growing.</p></div></div></div></section>
+          <section class="panel gradebook-panel"><div class="panel-heading gradebook-heading"><div><p class="eyebrow">YOUR RECORDS</p><h2>Student gradebook <span class="record-count" id="record-count">0</span></h2></div><div class="table-actions"><label class="search-box"><span>⌕</span><input id="search-input" type="search" placeholder="Find a student" aria-label="Find a student" /></label><button id="add-student-table" class="button button-outline" type="button">＋ Add student</button></div></div><div class="table-scroll"><table><thead><tr><th>STUDENT</th><th>MATHEMATICS <span class="max-mark">/ 100</span></th><th>SCIENCE <span class="max-mark">/ 100</span></th><th>AVERAGE</th><th>STATUS</th><th><span class="sr-only">Actions</span></th></tr></thead><tbody id="gradebook-body"><tr><td class="empty-state" colspan="6"><span class="empty-mark">✳</span><strong>Your gradebook is ready</strong><span>Add a student to start recording marks.</span></td></tr></tbody></table></div><div class="table-footer"><span id="table-summary">No student records yet</span><span>Marks are private to your account <span class="lock">⌑</span></span></div></section>
+          <footer class="page-footer"><span>CLASSMARK <span>·</span> ACADEMIC PERFORMANCE ANALYTICS</span><span>Thoughtful teaching starts with a clear picture.</span></footer>
+        </div>
+      </section>
+    </main>
+    <dialog id="student-dialog" class="student-dialog"><form id="student-form" method="dialog"><div class="dialog-head"><div><p class="eyebrow accent">GRADEBOOK ENTRY</p><h2 id="dialog-title">Add a student</h2><p class="muted">Enter marks out of 100 for each subject.</p></div><button class="dialog-close" type="button" id="close-dialog" aria-label="Close">×</button></div><label class="field">Student name<input id="student-name" type="text" maxlength="120" placeholder="Full name" required /></label><div class="mark-fields"><label class="field">Mathematics<input id="student-math" type="number" min="0" max="100" step="1" placeholder="0–100" required /></label><label class="field">Science<input id="student-science" type="number" min="0" max="100" step="1" placeholder="0–100" required /></label></div><p id="student-message" class="message" role="status"></p><div class="dialog-actions"><button class="button button-outline" id="cancel-dialog" type="button">Cancel</button><button id="save-student" class="button button-primary" type="submit">Save student <span>→</span></button></div></form></dialog>
+    <template id="student-row-template"><tr><td><div class="student-cell"><span class="student-avatar"></span><strong class="student-name"></strong></div></td><td class="math-score"></td><td class="science-score"></td><td><strong class="average-score"></strong></td><td><span class="grade-status"></span></td><td><button class="row-delete" type="button" aria-label="Delete student record" title="Delete record">×</button></td></tr></template>
+  </body>
+</html>
